@@ -1,0 +1,7 @@
+prefix=/usr/local
+includedir=${prefix}/include
+
+Name: xtensor-blas
+Description: An extension to the xtensor library, offering bindings to BLAS and LAPACK libraries.
+Version: 0.23.0
+Cflags: -I${includedir}
