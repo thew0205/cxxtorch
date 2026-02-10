@@ -10,7 +10,7 @@
         "request": "launch",
         "program": "/home/busoye_tm/Documents/matthew/tests/build/tensor",
         "args": [],
-        "stopAtEntry": true,
+        "stopAtEntry": false,
         "cwd": "${fileDirname}",
         "environment": [],
         "externalConsole": false,

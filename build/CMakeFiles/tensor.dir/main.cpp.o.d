@@ -1807,4 +1807,8 @@ CMakeFiles/tensor.dir/main.cpp.o: \
  /home/busoye_tm/Documents/matthew/tests/xtensor-blas/include/xflens/cxxlapack/interface/unmtr.tcc \
  /home/busoye_tm/Documents/matthew/tests/xtensor-blas/include/xflens/cxxlapack/interface/upgtr.tcc \
  /home/busoye_tm/Documents/matthew/tests/xtensor-blas/include/xflens/cxxlapack/interface/upmtr.tcc \
- /home/busoye_tm/Documents/matthew/tests/xtensor-blas/include/xflens/cxxlapack/interface/zsum1.tcc
+ /home/busoye_tm/Documents/matthew/tests/xtensor-blas/include/xflens/cxxlapack/interface/zsum1.tcc \
+ /home/busoye_tm/Documents/matthew/tests/xccarray.hpp \
+ /home/busoye_tm/Documents/matthew/tests/edge.hpp \
+ /home/busoye_tm/Documents/matthew/tests/node.hpp \
+ /home/busoye_tm/Documents/matthew/tests/function.hpp

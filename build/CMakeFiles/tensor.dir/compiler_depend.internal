@@ -3,6 +3,10 @@
 
 CMakeFiles/tensor.dir/main.cpp.o
  /home/busoye_tm/Documents/matthew/tests/main.cpp
+ /home/busoye_tm/Documents/matthew/tests/edge.hpp
+ /home/busoye_tm/Documents/matthew/tests/function.hpp
+ /home/busoye_tm/Documents/matthew/tests/node.hpp
+ /home/busoye_tm/Documents/matthew/tests/xccarray.hpp
  /home/busoye_tm/Documents/matthew/tests/xtensor-blas/include/xflens/cxxblas/auxiliary/auxiliary.h
  /home/busoye_tm/Documents/matthew/tests/xtensor-blas/include/xflens/cxxblas/auxiliary/auxiliary.tcc
  /home/busoye_tm/Documents/matthew/tests/xtensor-blas/include/xflens/cxxblas/auxiliary/complex.h
