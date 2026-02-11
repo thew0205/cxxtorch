@@ -1,6 +1,6 @@
 #pragma once
 
-#include "xccarray.hpp"
+#include "xcctensor.hpp"
 #include "edge.hpp"
 #include "xtensor/containers/xarray.hpp"
 #include "xtensor/containers/xadapt.hpp"
@@ -15,7 +15,7 @@
 #include <memory>
 
 template <typename T>
-class xccarray;
+class xcctensor;
 
 template <typename T>
 class Function;
@@ -30,10 +30,12 @@ template <typename T>
 class GraphNode
 {
 public:
-    xccarray<T> *arr_;
-    GraphEdge<T> *edge_;
+    std::shared_ptr<xcctensor<T>> arr_;
+    std::shared_ptr<GraphEdge<T>> edge_;
 
-    GraphNode(xccarray<T> *arr, GraphEdge<T> *edge = nullptr) : arr_{arr}, edge_{edge} {}
+    GraphNode(const std::shared_ptr<GraphEdge<T>> &edge) : arr_{}, edge_{edge} {}
+
+    GraphNode(const std::shared_ptr<xcctensor<T>> &arr) : arr_{arr}, edge_{} {}
 
     std::string print(size_t indent = 0)
     {
@@ -43,7 +45,7 @@ public:
         {
             tab += "  ";
         }
-        oss << tab << "|--" << "xarr: " << arr_->arr_ << " @ " << arr_<< "\n";
+        oss << tab << "|--" << "xarr: " << arr_->arr_ << " @ " << arr_ << "\n";
         if (edge_ != nullptr)
         {
             oss << edge_->print(indent);
@@ -55,7 +57,7 @@ public:
         return oss.str();
     }
 
-    void backward(const xccarray<T> *arr)
+    void backward(const std::shared_ptr<xcctensor<T>> arr)
     {
         if (edge_ != nullptr)
         {
@@ -65,9 +67,9 @@ public:
 };
 
 template <typename T>
-inline std::vector<GraphNode<T> *> make_nodes_from_xccarrry(const std::vector<xccarray<T> *> &arrs)
+inline std::vector<std::shared_ptr<GraphNode<T>>> make_nodes_from_xccarrry(const std::vector<std::shared_ptr<xcctensor<T>>> &arrs)
 {
-    std::vector<GraphNode<T> *> nodes;
+    std::vector<std::shared_ptr<GraphNode<T>>> nodes;
     for (auto &arr : arrs)
     {
         if (arr->node_ != nullptr)
@@ -76,7 +78,8 @@ inline std::vector<GraphNode<T> *> make_nodes_from_xccarrry(const std::vector<xc
         }
         else
         {
-            nodes.push_back(new GraphNode{arr});
+            auto a = std::make_shared<GraphNode<T>>(arr);
+            nodes.push_back(a);
         }
     }
     return nodes;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "xccarray.hpp"
+#include "xcctensor.hpp"
 #include "node.hpp"
 
 #include "xtensor/containers/xarray.hpp"
@@ -22,9 +22,9 @@ class GraphEdge
 {
 public:
     Function<T> *fun_;
-    std::vector<GraphNode<T> *> nodes_;
+    std::vector<std::shared_ptr<GraphNode<T>>> nodes_;
 
-    GraphEdge(Function<T> *fun, const std::vector<GraphNode<T> *> &nodes) : fun_{fun}, nodes_{nodes}
+    GraphEdge(Function<T> *fun, const std::vector<std::shared_ptr<GraphNode<T>>> &nodes) : fun_{fun}, nodes_{nodes}
     {
     }
 
@@ -32,7 +32,8 @@ public:
     {
         std::ostringstream oss;
         std::string tab;
-        for(size_t i = 0; i < indent +1; i++){
+        for (size_t i = 0; i < indent + 1; i++)
+        {
             tab += "  ";
         }
         if (fun_ != nullptr)
@@ -52,7 +53,7 @@ public:
         return oss.str();
     }
 
-    void backward(const xccarray<T> *arr)
+    void backward(const std::shared_ptr<xcctensor<T>> arr)
     {
         if (fun_ != nullptr)
         {
